@@ -1,0 +1,74 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reactive form</title>
+</head>
+<body>
+<h3>Reactive form</h3>
+<div class="container">
+  <h3>forms Table</h3>
+  <br>
+  <form #contactList="ngForm" (submit)="onSubmit(contactList)" >
+    <p>
+      <label for="firstName">firstName:</label>
+      <input type="text"  #firstName="ngModel" id="firstName"  name="firstName"  ngModel required minlength="7">
+    <span class="text-danger" *ngIf="!firstName.valid && (firstName.touched || firstName.dirty)">
+     <span class="text-danger" *ngIf="firstName.errors?.['minlength']">
+          <!-- Minimum length is 7 charactors -->
+     </span>
+    </span>
+    </p>
+    <p>
+      <label for="lastName">lastName:</label>
+      <input type="text" #lastName="ngModel" id="lastName" name="lastName" ngModelrequired minlength="5" >
+      <span class="text-danger" *ngIf="!firstName.valid && (firstName.touched || firstName.dirty)">
+     <span class="text-danger" *ngIf="firstName.errors?.['minlength']">
+          <!-- Minimum length is 5 charactors -->
+     </span>
+    </span>
+    </p>
+    <p>
+      <label for="email">Email:</label>
+      <input type="text" id="email" name="email" ngModel>
+    </p>
+    <p>
+      <label for="genter">Genter: </label>
+      <input type="radio" id="genter" name="genter" value="male" ngModel>male
+      <input type="radio" id="genter" name="genter" value="female" ngModel>female
+    </p>
+    <p>
+      <label for="isMarried" >Married:</label>
+      <input type="checkBox" id="isMarried" name="isMarried" ngModel>
+    </p>
+    <div ngModelGroup="address">
+      <p>
+        <label for="city"> city:</label>
+        <input type="text" name="city" ngModel>
+      </p>
+      <p>
+        <label for="street">street:</label>
+        <input type="text" name="street" ngModel>
+      </p>
+      <p>
+        <label for="pinCode">pinCode:</label>
+        <input type="text" name="pinCode" ngModel>
+      </p>
+    </div>
+    <p>
+      <label for="country">country:</label>
+      <select name="country" id="country" >
+        <option  value="India">India</option>
+        <option value="USA" >USA</option>
+        <option value="England">England</option>
+      </select>
+    </p>
+    <p>
+      <button type="submit" [disabled]="!contactList.valid  ">submit</button>
+    </p>
+  </form>
+</div>
+
+
+</body>
+</html>

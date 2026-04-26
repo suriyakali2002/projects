@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>message delivered</title>
+
+    <style>
+        h2 {
+            align-items: center;
+            color: white;
+            position: relative;
+            left: 50%;
+            width: 300px;
+            margin-left: -150px;
+        }
+        
+        #divOne {
+            align-content: center;
+            justify-items: center;
+            font-family: sans-serif;
+            padding: 2px;
+            background-color: rgb(0, 160, 223);
+            width: 600px;
+            height: 350px;
+            margin: -175px 0 0 -300px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            color: white;
+        }
+        
+        #divTwo {
+            background-color:lightpink;
+            font-family: sans-serif;
+            width: 550px;
+            height: 125px;
+            font-family: monospace;
+            margin-left: -275px;
+            position: relative;
+            top: 50px;
+            left: 50%;
+            color: black;
+            font-size: 18px;
+            display: block;
+        }
+        
+        
+        
+        button {
+            display: block;
+            position: relative;
+            top: 55px;
+            height: 30px;
+            left: 50%;
+            width: 80px;
+            margin-left: -40px;
+        }
+        
+        input {
+            position: absolute;
+            left: 50%;
+            width: 450px;
+            height: 25px;
+            margin-left: -225px;
+        }
+        
+        h3 {
+            display: block;
+            position: relative;
+            left: 50%;
+            width: 400px;
+            margin-left: -100px;
+            top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="divOne">
+        <h2>Your Message goes here</h2>
+        <input type="text" placeholder="Your message" id="input">
+        <button id="button" onclick="inputGet()">Submit</button>
+        <h3>Last Message delivered</h3>
+        <div id="divTwo">
+            <h1 style="width: 100%; display: none; background-color: red; text-align: center;" id="h1">No message sent!</h2>
+                <p id="para">
+                    
+                </p>
+        </div>
+    </div>
+
+    <script>
+        const button = document.getElementById('button')
+        let input = document.getElementById('input')
+        let para = document.getElementById('para')
+            
+        function timeout() {
+            document.getElementById('h1').style.display = "none";
+        }
+
+        function inputGet() {
+            if (input.value === '') {
+                document.getElementById('h1').style.display = "block";
+                var time = setTimeout(timeout, 2000)
+            }
+            const div = document.getElementById('divTwo')
+              
+            para.innerText = input.value
+            input.value = ''
+        }
+
+        input.addEventListener("keyup", function() {
+            if (event.keyCode === 13) {
+                return inputGet()
+            }
+        })
+    </script>
+</body>
+
+</html>
