@@ -1,0 +1,64 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+.container{
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: aliceblue;
+      }
+      .btn{
+        width: 200px;
+        height: 100px;
+        background-color:black;
+        border-radius: 200px;
+        cursor: pointer;
+        position: relative;
+      }
+      .btn::before{
+        position: absolute; 
+        background-color: aliceblue;
+        content: "";
+        width: 90px;
+        height: 90px;
+        border-radius: 200px;
+        padding: 10px;
+        left: 10px;
+        transition: 0.5s;
+      }
+      input:checked +.btn{
+        background-color: cadetblue;
+      }
+      input:checked +.btn::before{
+        transform: translateX(100px);
+      }
+      input{
+        display: none;
+      } 
+</style>
+<body>
+    <div class="container">
+        <input type="checkbox" id="check" onclick="changeColor()"/>
+        <label for="check" class="btn"></label>
+</body>
+<script>
+ function changeColor(){
+     let checkbox=document.getElementById("check")
+     let div=document.querySelector(".container")
+     checkbox.addEventListener("change",function(){
+          if(this.checked){
+        div.style.backgroundColor="blue"
+         }else{
+        div.style.backgroundColor="aliceblue"
+     }
+     })
+    }
+</script>
+</html>  
+     
